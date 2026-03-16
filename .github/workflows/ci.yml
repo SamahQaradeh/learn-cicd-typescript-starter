@@ -43,4 +43,4 @@ jobs:
         run: npm run format:check
 
       - name: Check lintting
-        run:  npx eslint .
+        run:  npm run lint
