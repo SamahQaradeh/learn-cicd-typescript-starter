@@ -1,17 +1,26 @@
 // eslint.config.js
+
 import { defineConfig } from "eslint/config";
 
-export default defineConfig([
-  // TypeScript files
-  {
-    files: ["**/*.{ts,cts,mts}"],
-    parser: "@typescript-eslint/parser",
-    plugins: ["@typescript-eslint"],
-    extends: ["plugin:@typescript-eslint/recommended"],
+export default defineConfig({
+  root: true,
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: "module",
   },
-  // JavaScript files
-  {
-    files: ["**/*.{js,cjs,mjs}"],
-    extends: ["eslint:recommended"],
+  env: {
+    node: true,
+    es2021: true,
   },
-]);
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  plugins: ["@typescript-eslint"],
+  rules: {
+    // optional custom rules
+    "no-unused-vars": "warn",
+    "semi": ["error", "always"]
+  }
+});
